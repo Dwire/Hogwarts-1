@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
-
+import EditForm from "./editForm.js"
 class HouseContainer extends Component {
-
+  state={
+    clicked:false
+  }
+handleClick = () => {
+this.setState({
+  clicked: !this.state.clicked
+})
+}
 
   render() {
 
@@ -9,7 +16,8 @@ class HouseContainer extends Component {
       let foundStudents = this.props.studentsArry.filter(student => student.house ==="Gryffindor");
         return foundStudents.map(student => <div >
           <h3>{student.name}</h3>
-          <img src={student.image2}/>
+          <img onClick={this.handleClick} src={student.image2}/>
+          {this.state.clicked === true ? <EditForm student={student}/>:"" }
         </div>)
     }
     const houseSlytherin = () => {

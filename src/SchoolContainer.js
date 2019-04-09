@@ -3,27 +3,25 @@ import SchoolCard from "./schoolCard.js"
 
 class SchoolContainer extends React.Component {
   state={
-    filtered:this.props.studentArry,
-    findStudent:null
+    findStudent:""
+  }
+
+  filteredStudents = (e) => {
+
+    this.setState({
+      findStudent:e.target.value
+    })
+
   }
 
   render() {
 
-    const studentCard = () => {return this.props.studentsArry.map((student) => {
+    const foundStudents = this.props.studentsArry.filter(student =>  student.name.includes(this.state.findStudent ))
+
+    console.log(this.state)
+    const studentCard = () => {return foundStudents.map((student) => {
       return <SchoolCard  student={student} handleClick={this.props.handleClick} />
     })}
-    const  filteredStudents = (e) => {
-      console.log(e)
-
-      this.setState({
-        findStudent:e.target.value
-      })
-      const foundStudents = this.state.filtered.filter(student => student.name.includes(this.state.findStudent))
-
-      console.log("This is the array of students with that name:",foundStudents);
-      return foundStudents
-
-    }
 
     // const foundStudents = this.state.filtered.filter(student => student.name.includes(this.state.findStudent))
 
@@ -31,7 +29,7 @@ class SchoolContainer extends React.Component {
     return (
       <div>
         <h1>All Students</h1>
-        <input value={this.state.findStudent} name="findStudent" placeholder="Search by Name/ House"onChange={e => filteredStudents(e)}/>
+        <input value={this.state.findStudent} name="findStudent" placeholder="Search by Name/ House"onChange={this.filteredStudents}/>
         <br/>
         <br/>
         <br/>
