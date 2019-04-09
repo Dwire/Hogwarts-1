@@ -30,3 +30,35 @@
     transform: rotate(360deg);
   }
 }
+
+img {
+  height: 200px;
+  width:250px;
+}
+
+#SchoolCard{
+  text-align: center;
+  border: 1px dotted green;
+  display: inline-block;
+  padding: 20px;
+  margin: 0px 10px;
+
+}
+#main{
+  text-align: center;
+}
+hr {
+  margin: 100px 0px;
+}
+form{
+  display:inline-grid;
+}
+.inline-block{
+    display:block;
+    width: 200px;
+    padding: 0px 70px ;
+    text-align: center;
+}
+#SchoolContainer{
+  display: inline-flex;
+}
